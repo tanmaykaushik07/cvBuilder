@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Test</title>
+    <link rel="stylesheet" href="stylesheet.css">
+  </head>
+  <body>
+    <div class="input_side">
+      <article class="regular">
+        <label for="name">Name: </label>
+        <input type="text" id="name" placeholder="Enter name" autofocus>
+
+
+        <br>
+        <label for="e-mail">Email: </label>
+        <input type="email" id="e-mail" placeholder="Enter email">
+
+        <br>
+        <label for="phone">Contact No:</label>
+        <input type="text" id="phone" placeholder="Enter phone number">
+
+        <br>
+        <label for="college">College:</label>
+        <input type="text" id="college" placeholder="Enter university">
+
+        <br>
+        <label for="degree">Degree:</label>
+        <input type="text" id="degree" placeholder="Enter degree">
+
+        <br>
+        <label for="cgpa">CGPA:</label>
+        <input type="text" id="cgpa" placeholder="Enter CGPA">
+
+        <br>
+        <label for="school">High School:</label>
+        <input type="text" id="school" placeholder="Enter school">
+
+        <br>
+        <label for="percentage">Class XII Percentage:</label>
+        <input type="text" id="percentage" placeholder="Enter class XII percentage">
+
+        <br>
+        <label for="wex_one">Work Experience 1:</label>
+        <input type="text" id="wex_one" placeholder="Enter work experience">
+
+        
+        <br>
+        <label for="proj_one">Projects :</label>
+        <input type="text" id="proj_one" placeholder="Enter project">
+        <br>
+        <label>Img:</label>
+        <input type="file" onchange="upload(event)" accept="image/jpg image/png" >
+
+       
+        
+
+       
+
+        <br>
+        <input type="button"  id="generate_cv" value="Generate CV">
+      </article>
+    </div>
+
+
+    <div class="output_side" id="output">
+      <ul>
+        <li class="img" id="imgCon"></li>
+        <li class="name" id="applicant_name"></li>
+        <li class="contact" id="contact_num"></li>
+        <li class="email" id="email_id"></li>
+        <li class="heading" id="education_header"></li>
+        <li class="institute_name" id="applicant_college"></li>
+        <li class="course_name" id="applicant_course"><li>
+        <li class="institute_name" id="applicant_school"></li>
+        <li class="heading" id="work_header"></li>
+        <li class="work_ex" id="applicant_wex_1"></li>
+        <li class="work_desc" id="applicant_wex_desc_1"></li>
+        <li class="work_ex" id="applicant_wex_2"></li>
+        <li class="work_desc" id="applicant_wex_desc_2"></li>
+        <li class="heading" id="projects_header"></li>
+        <li class="project_title" id="applicant_proj_1"></li>
+        <li class="project_desc" id="applicant_proj_desc_1"></li>
+        <li class="project_title" id="applicant_proj_2"></li>
+        <li class="project_desc" id="applicant_proj_desc_2"></li>
+        <li class="heading" id="tech_stack_header"></li>
+        <li class="tech_stack" id="applicant_tech_stack"></li>
+        
+      </ul>
+      <br>
+    </div>
+
+    <script>
+      const entered_name = document.getElementById('name');
+      const app_name = document.getElementById('applicant_name');
+      const entered_email = document.getElementById('e-mail');
+      const email = document.getElementById('email_id');
+      const entered_no = document.getElementById('phone');
+      const contact = document.getElementById('contact_num');
+      const ed_header = document.getElementById('education_header');
+      const entered_college = document.getElementById('college');
+      const college = document.getElementById('applicant_college');
+      const entered_degree = document.getElementById('degree');
+      const degree = document.getElementById('applicant_course');
+      const entered_school = document.getElementById('school');
+      const school = document.getElementById('applicant_school');
+      const entered_cgpa = document.getElementById('cgpa');
+      const entered_percentage = document.getElementById('percentage');
+
+
+
+      const work_header = document.getElementById('work_header');
+      const entered_wex1 = document.getElementById('wex_one');
+      const wex1 = document.getElementById('applicant_wex_1');
+      const entered_descr1 = document.getElementById('wex_one_desc');
+      const descr1 = document.getElementById('applicant_wex_desc_1');
+      const entered_wex2 = document.getElementById('wex_two');
+      const wex2 = document.getElementById('applicant_wex_2');
+      const entered_descr2 = document.getElementById('wex_two_desc');
+      const descr2 = document.getElementById('applicant_wex_desc_2');
+
+      const proj_header = document.getElementById('projects_header');
+      const entered_proj1 = document.getElementById('proj_one');
+      const proj1 = document.getElementById('applicant_proj_1');
+      const entered_proj_descr1 = document.getElementById('proj_one_desc');
+      const proj_descr1 = document.getElementById('applicant_proj_desc_1');
+      const entered_proj2 = document.getElementById('proj_two');
+      const proj2 = document.getElementById('applicant_proj_2');
+      const entered_proj_descr2 = document.getElementById('proj_two_desc');
+      const proj_descr2 = document.getElementById('applicant_proj_desc_2');
+      let output=document.getElementById('output')
+      const stack_header = document.getElementById('tech_stack_header');
+      const entered_stack = document.getElementById('tech_stack');
+      const stack = document.getElementById('applicant_tech_stack');
+
+      const generate_button = document.getElementById('generate_cv');
+
+      function upload(event){
+        var imgCon=document.getElementById("imgCon")
+        imgCon.innerHTML="<img  id='img_output'/>'"
+        var pic =document.getElementById("img_output")
+       console.log((event.target.files[0]));
+       pic.src=URL.createObjectURL(event.target.files[0])
+      }
+
+      function fun1(){
+        output.style.display="block";
+        app_name.innerHTML = entered_name.value;
+        contact.innerHTML = entered_no.value;
+        email.innerHTML = entered_email.value;
+        ed_header.innerHTML = "EDUCATION";
+        college.innerHTML = entered_college.value + ":                           " + entered_cgpa.value;
+        degree.innerHTML = entered_degree.value;
+        school.innerHTML = entered_school.value + ":                           " + entered_percentage.value +"%";
+        work_header.innerHTML = "WORK EXPERIENCE"
+        wex1.innerHTML = entered_wex1.value;
+        descr1.innerHTML = entered_descr1.value;
+        wex2.innerHTML = entered_wex2.value;
+        descr2.innerHTML = entered_descr2.value;
+        proj_header.innerHTML = "PROJECTS"
+        proj1.innerHTML = entered_proj1.value;
+        proj_descr1.innerHTML = entered_proj_descr1.value;
+        proj2.innerHTML = entered_proj2.value;
+        proj_descr2.innerHTML = entered_proj_descr2.value;
+
+        stack_header.innerHTML = "TECH STACK";
+        stack.innerHTML = entered_stack.value;
+      }
+
+      generate_button.addEventListener('click',fun1);
+    </script>
+  </body>
+</html>
